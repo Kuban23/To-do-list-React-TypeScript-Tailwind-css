@@ -19,7 +19,8 @@ export const TodoItem = (props: PropsType) => {
       <div>
 
          {props.todos.map(todo =>
-            <div className='flex items-center bg-zinc-800 mb-5 mx-5 rounded-2xl px-4 py-4 justify-between' key={todo.id}>
+            <div className='flex items-center bg-zinc-800 mb-5 mx-5 rounded-2xl px-4 py-4 justify-between
+            hover:bg-zinc-700 hover:opacity-80 ease-in-out duration-500' key={todo.id}>
                <span className='flex items-center'>
                <button>
              <Check />

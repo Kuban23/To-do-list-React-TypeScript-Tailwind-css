@@ -1,4 +1,8 @@
 import React from 'react'
+import CreateTodoItem from './CreateTodoItem';
+import FilterTodoItem from './FilterTodoItem';
+
+
 import { TodoItem } from './TodoItem';
 
 const Home = () => {
@@ -13,9 +17,14 @@ const Home = () => {
    return (
       <div className='bg-gray-900 h-screen text-white w-4/5 mx-auto'>
          <h1 className=' font-bold text-2xl text-center mb-10 pt-5'>Список дел.</h1>
-            <TodoItem todos={todos} />
 
-        
+       <FilterTodoItem/>
+
+         <CreateTodoItem />
+
+         <TodoItem todos={todos} />
+
+
       </div>
    )
 }
