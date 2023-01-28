@@ -17,17 +17,20 @@ const Home = () => {
       setTodos(prev => prev.map(item => item.id === id ? { ...item, isCompleted: !item.isCompleted } : item))
    }
 
+   const removeTodo = (id: number) => {
+      setTodos(todos.filter(todo => todo.id !== id))
+   }
+
    return (
       <div className='bg-gray-900 h-screen text-white w-4/5 mx-auto'>
          <h1 className=' font-bold text-2xl text-center mb-10 pt-5'>Список дел.</h1>
 
          <FilterTodoItem />
-
          <CreateTodoItem />
-
          <TodoItem
             todos={todos}
             checkedTodo={checkedTodo}
+            removeTodo={removeTodo}
          />
 
 
