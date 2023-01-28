@@ -1,11 +1,21 @@
 import React from 'react'
 import CreateTodoItem from './CreateTodoItem';
 import FilterTodoItem from './FilterTodoItem';
-
-
 import { TodoItem } from './TodoItem';
 
 const Home = () => {
+
+   const setTodoLocalStorage = (newTodo: any) => {
+      setTodos(newTodo)
+      localStorage.setItem('newTodo', JSON.stringify(newTodo))
+   }
+
+   const loadSavedTodo = () => {
+      const saved = localStorage.getItem('newTodo')
+      if (saved) {
+         setTodos(JSON.parse(saved))
+      }
+   }
 
    const [todos, setTodos] = React.useState([
       { id: 1, title: 'Изучить React', isCompleted: false },
@@ -13,12 +23,27 @@ const Home = () => {
       { id: 3, title: 'Изучить Redux', isCompleted: false },
    ]);
 
+   React.useEffect(() => {
+      loadSavedTodo()
+   }, [])
+
+
    const checkedTodo = (id: number) => {
-      setTodos(prev => prev.map(item => item.id === id ? { ...item, isCompleted: !item.isCompleted } : item))
+      const newTodo = todos.map(todo => {
+         if (todo.id === id) {
+            return {
+               ...todo,
+               isCompleted: !todo.isCompleted
+            }
+         }
+         return todo
+      })
+      setTodoLocalStorage(newTodo)
+      // setTodos(prev => prev.map(item => item.id === id ? { ...item, isCompleted: !item.isCompleted } : item))
    }
 
    const removeTodo = (id: number) => {
-      setTodos(todos.filter(todo => todo.id !== id))
+      setTodoLocalStorage(todos.filter(todo => todo.id !== id))
    }
 
    return (
@@ -26,7 +51,10 @@ const Home = () => {
          <h1 className=' font-bold text-2xl text-center mb-10 pt-5'>Список дел.</h1>
 
          <FilterTodoItem />
-         <CreateTodoItem />
+         <CreateTodoItem
+            todos={todos}
+            setTodoLocalStorage={setTodoLocalStorage}
+         />
          <TodoItem
             todos={todos}
             checkedTodo={checkedTodo}
