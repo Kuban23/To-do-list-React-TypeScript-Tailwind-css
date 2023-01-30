@@ -18,7 +18,7 @@ interface TodoItemProps {
 export const TodoItem: FC<TodoItemProps> = ({ todos, checkedTodo, removeTodo }) => {
 
    const AddQuantityTodo = todos.length;
-   const completeQuantityTodo = todos.filter((todo) => todo.isCompleted).length;
+   const completedQuantityTodo = todos.filter((todo) => todo.isCompleted === true).length;
 
    return (
       <div>
@@ -31,7 +31,7 @@ export const TodoItem: FC<TodoItemProps> = ({ todos, checkedTodo, removeTodo }) 
             <div>
                <p>Выполненных дел</p>
                <span className="bg-zinc-800 rounded-2xl px-2 py-1">
-                  {completeQuantityTodo} из {AddQuantityTodo}
+                  {completedQuantityTodo} из {AddQuantityTodo}
                </span>
             </div>
          </div>
