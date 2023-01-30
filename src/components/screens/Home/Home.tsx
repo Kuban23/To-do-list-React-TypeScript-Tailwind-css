@@ -5,18 +5,6 @@ import { TodoItem } from './TodoItem';
 
 const Home = () => {
 
-   const setTodoLocalStorage = (newTodo: any) => {
-      setTodos(newTodo)
-      localStorage.setItem('newTodo', JSON.stringify(newTodo))
-   }
-
-   const loadSavedTodo = () => {
-      const saved = localStorage.getItem('newTodo')
-      if (saved) {
-         setTodos(JSON.parse(saved))
-      }
-   }
-
    const [todos, setTodos] = React.useState([
       { id: 1, title: 'Изучить React', isCompleted: false },
       { id: 2, title: 'Изучить TypeScript', isCompleted: false },
@@ -24,9 +12,16 @@ const Home = () => {
    ]);
 
    React.useEffect(() => {
-      loadSavedTodo()
+      const newtask = localStorage.getItem('newTodo');
+      if (newtask) {
+         setTodos(JSON.parse(newtask))
+      }
    }, [])
 
+   const setTodoLocalStorage = (newTodo: any) => {
+      setTodos(newTodo)
+      localStorage.setItem('newTodo', JSON.stringify(newTodo))
+   }
 
    const checkedTodo = (id: number) => {
       const newTodo = todos.map(todo => {
@@ -36,7 +31,7 @@ const Home = () => {
                isCompleted: !todo.isCompleted
             }
          }
-         return todo
+         return todo;
       })
       setTodoLocalStorage(newTodo)
       // setTodos(prev => prev.map(item => item.id === id ? { ...item, isCompleted: !item.isCompleted } : item))
