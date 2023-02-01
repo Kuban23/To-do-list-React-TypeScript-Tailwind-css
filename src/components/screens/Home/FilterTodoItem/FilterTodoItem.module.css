@@ -1,0 +1,8 @@
+.header {
+@apply flex justify-around gap-3 mb-7;
+}
+
+.header__btn {
+@apply border-2 rounded-lg py-2 bg-zinc-800 border-none rounded-xl items-center w-32
+hover:bg-zinc-700 hover:opacity-80 ease-in-out duration-500;
+}

@@ -1,0 +1,12 @@
+
+	.check {
+		@apply border-pink-400 border-2 rounded-lg w-6 h-6 mr-3 flex items-center justify-center;
+	}
+
+.check-active {
+	@apply bg-pink-400;
+}
+
+	.check__btn{
+		@apply text-gray-900		
+	}

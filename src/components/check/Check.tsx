@@ -1,21 +1,19 @@
-import React, { FC } from 'react'
-import { BsCheck } from 'react-icons/bs'
-import cn from 'classnames'
+import React, { FC } from 'react';
+import { BsCheck } from 'react-icons/bs';
+import cn from 'classnames';
+import classes from './Check.module.css';
 
-interface CheckProps {
-
-   isCompleted: boolean,
+interface PropsCheck {
+  isCompleted: boolean;
 }
 
-const Check: FC<CheckProps> = ({ isCompleted }) => {
-   return (
-      <div className={cn('border-2 rounded-lg border-pink-400 w-6 h-6 mr-3 flex items-center justify-center',
-         { 'bg-pink-400': isCompleted })}>
-         {isCompleted &&
-            <BsCheck className=' text-gray-900' size={24} />
-         }
-      </div >
-   )
-}
+const Check: FC<PropsCheck> = ({ isCompleted }) => {
+  return (
+    <div className={cn(classes.check, { 'bg-pink-400': isCompleted })}>
+    
+      {isCompleted && <BsCheck className={classes.check__btn} size={24} />}
+    </div>
+  );
+};
 
-export default Check
+export default Check;

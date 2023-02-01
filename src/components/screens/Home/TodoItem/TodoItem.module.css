@@ -1,0 +1,23 @@
+.lead {
+@apply flex justify-between px-6 mb-5;
+}
+
+.lead__item {
+@apply flex flex-col items-start;
+}
+
+.lead__text {
+@apply bg-zinc-800 rounded-2xl px-2 py-1;
+}
+
+.main {
+@apply flex items-center bg-zinc-800 mb-5 mx-5 rounded-2xl px-4 py-4 justify-between
+            hover:bg-zinc-700 hover:opacity-80 ease-in-out duration-500;
+}
+.maim__conteiner {
+	@apply flex items-center;
+}
+
+.main__btnTrash {
+	@apply hover:text-red-700 duration-500 text-gray-600
+}
