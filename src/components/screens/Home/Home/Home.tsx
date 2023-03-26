@@ -5,7 +5,7 @@ import FilterTodoItem from '../FilterTodoItem/FilterTodoItem';
 import { TodoItem } from '../TodoItem/TodoItem';
 import classes from './Home.module.css';
 
-type TodofilterType = 'all' | 'active' | 'completed';
+export type TodofilterType = 'all' | 'active' | 'completed';
 
 const Home = () => {
    const [todos, setTodos] = React.useState([
@@ -68,8 +68,7 @@ const Home = () => {
          <FilterTodoItem filterTodoForList={filterTodoForList} />
 
          <CreateTodoItem
-            todos={todos}
-            setTodos={setTodos}
+            todos={todos}            
             saveLocalStorageTodo={saveLocalStorageTodo}
          />
 
